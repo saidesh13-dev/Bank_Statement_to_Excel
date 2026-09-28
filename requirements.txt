@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 streamlit
 pdfplumber
 openpyxl
 reportlab
+=======
+streamlit
+pdfplumber
+openpyxl
+reportlab
+>>>>>>> c40f766 (Deploy Project Digital Hustle app)
