@@ -5,6 +5,7 @@ import base64
 from pathlib import Path
 
 import streamlit as st
+import streamlit.components.v1 as components
 
 
 CORE_PATH = Path(__file__).with_name(".py")
@@ -51,6 +52,23 @@ else:
 
 
 st.set_page_config(page_title="Project Digital Hustle | Statement Studio", layout="wide")
+
+components.html(
+    """
+    <script>
+    const adScriptUrl = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9442257999605392";
+    const pageHead = window.parent.document.head;
+    if (!pageHead.querySelector(`script[src="${adScriptUrl}"]`)) {
+        const adScript = window.parent.document.createElement("script");
+        adScript.async = true;
+        adScript.src = adScriptUrl;
+        adScript.crossOrigin = "anonymous";
+        pageHead.appendChild(adScript);
+    }
+    </script>
+    """,
+    height=0,
+)
 
 st.markdown(
     """
