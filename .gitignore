@@ -1,0 +1,9 @@
+.venv/
+.venv-1/
+__pycache__/
+*.pyc
+.streamlit/
+converted_bank_statement.xlsx
+bank_statement.xlsx
+validation_totals.xlsx
+fnb_validation_totals.xlsx

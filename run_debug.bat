@@ -1,0 +1,3 @@
+@echo off
+cd /d "C:\Users\saide\OneDrive\Desktop\Bank Statement Reader"
+".\.venv\Scripts\python.exe" -c "import importlib.util, pathlib; p = pathlib.Path('.py'); spec = importlib.util.spec_from_file_location('core', p); m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m); pdf = r'C:\Users\saide\Downloads\66aaf8d50a2c9b4f97b3713bd57dca5d.pdf'; print('FILE', pdf); print(m.extract_text_from_pdf(pdf)[:800]); print('ROWS', m.parse_bank_statement(pdf)[:5])"
