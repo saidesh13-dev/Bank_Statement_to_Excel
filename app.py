@@ -54,7 +54,8 @@ else:
 st.set_page_config(page_title="Project Digital Hustle | Statement Studio", layout="wide")
 
 components.html(
-    """
+    """google.com, pub-9442257999605392, DIRECT, f08c47fec0942fa0
+    <meta name="google-adsense-account" content="ca-pub-9442257999605392">
     <script>
     const adScriptUrl = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9442257999605392";
     const pageHead = window.parent.document.head;
