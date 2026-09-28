@@ -12,6 +12,15 @@ ADSENSE_META_TAG = (
     '<meta name="google-adsense-account" '
     'content="ca-pub-9442257999605392">'
 )
+GOOGLE_ANALYTICS_TAG = """<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97M6GD7RW7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-97M6GD7RW7');
+</script>"""
 HEAD_TAG = "<head>"
 INDEX_PATH = Path(streamlit.__file__).resolve().parent / "static" / "index.html"
 
@@ -21,6 +30,8 @@ injected_tags = []
 for tag in (ADSENSE_META_TAG, ADSENSE_TAG):
     if tag not in html:
         injected_tags.append(tag)
+if "gtag/js?id=G-97M6GD7RW7" not in html:
+    injected_tags.append(GOOGLE_ANALYTICS_TAG)
 
 if injected_tags:
     if HEAD_TAG not in html:
