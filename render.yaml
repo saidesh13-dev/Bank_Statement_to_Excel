@@ -1,23 +1,10 @@
-<<<<<<< HEAD
 services:
   - type: web
     name: project-digital-hustle-statement-studio
     env: python
     plan: free
     buildCommand: pip install -r requirements.txt
-    startCommand: streamlit run app.py --server.address 0.0.0.0 --server.port $PORT
+    startCommand: python prepare_streamlit.py && streamlit run app.py --server.address 0.0.0.0 --server.port $PORT
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.9
-=======
-services:
-  - type: web
-    name: project-digital-hustle-statement-studio
-    env: python
-    plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: streamlit run app.py --server.address 0.0.0.0 --server.port $PORT
-    envVars:
-      - key: PYTHON_VERSION
-        value: 3.11.9
->>>>>>> c40f766 (Deploy Project Digital Hustle app)
