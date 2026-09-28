@@ -30,7 +30,16 @@ logo_candidates = [
 ]
 logo_path = next((path for path in logo_candidates if path.exists()), None)
 if logo_path is None:
-    logo_path = next(iter(sorted(Path(__file__).parent.glob("*logo*.*"))), None)
+    image_extensions = {".png", ".jpg", ".jpeg", ".webp", ".gif"}
+    image_files = [
+        path for path in Path(__file__).parent.rglob("*")
+        if path.is_file() and path.suffix.lower() in image_extensions
+    ]
+    logo_files = [
+        path for path in image_files
+        if any(keyword in path.stem.lower() for keyword in ["logo", "digital", "hustle", "project"])
+    ]
+    logo_path = sorted(logo_files or image_files, key=lambda path: str(path).lower())[0] if (logo_files or image_files) else None
 
 if logo_path is not None:
     logo_data = base64.b64encode(logo_path.read_bytes()).decode("ascii")
@@ -78,6 +87,8 @@ st.markdown(
     .upload-shell p { color:#bac9d7; margin:0 0 1.2rem; }
     .upload-shell [data-testid='stFileUploader'] section { background:#0c2037; border-color:#3678a1; }
     .upload-shell [data-testid='stFileUploader'] label, .upload-shell [data-testid='stFileUploader'] small { color:#e7ebef; }
+    .upload-shell [data-testid='stFileUploader'] button { background:var(--cyan) !important; color:#071525 !important; border-color:var(--cyan) !important; font-weight:700 !important; }
+    .upload-shell [data-testid='stFileUploader'] button p, .upload-shell [data-testid='stFileUploader'] button span { color:#071525 !important; }
     .section-label { margin:2.8rem 0 1rem; }
     .footer-row { display:flex; align-items:center; justify-content:space-between; gap:1rem; }
     .coffee-button { display:inline-block; background:var(--cyan); color:var(--ink) !important; padding:.75rem 1rem; border-radius:3px; font-weight:700; font-size:.78rem; text-decoration:none !important; transition:transform .2s ease, background .2s ease; }
